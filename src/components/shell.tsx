@@ -32,6 +32,7 @@ export function Shell({ children }: { children: ReactNode }) {
             <NavLink key={href} href={href} label={label} />
           ))}
         </nav>
+        <a className="logout-link" href="/logout">Sign out</a>
       </aside>
       <main className="main">{children}</main>
     </div>

@@ -1,33 +1,31 @@
 import { NextResponse, type NextRequest } from "next/server";
+import {
+  DASHBOARD_SESSION_COOKIE,
+  getDashboardAuthConfig,
+  isValidDashboardSession,
+  sanitizeNextPath,
+} from "@/lib/dashboard-auth";
 
-export function middleware(request: NextRequest) {
-  const username = process.env.DASHBOARD_BASIC_AUTH_USER;
-  const password = process.env.DASHBOARD_BASIC_AUTH_PASSWORD;
+export async function middleware(request: NextRequest) {
+  const config = getDashboardAuthConfig();
+  if (!config) return NextResponse.next();
 
-  if (!username || !password) return NextResponse.next();
+  const { pathname, search } = request.nextUrl;
+  const session = request.cookies.get(DASHBOARD_SESSION_COOKIE)?.value;
+  const isValid = await isValidDashboardSession(session);
 
-  const header = request.headers.get("authorization");
-  const unauthorized = new NextResponse("Authentication required", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="Gennety Analytics"',
-    },
-  });
-
-  if (!header?.startsWith("Basic ")) return unauthorized;
-
-  const credentials = atob(header.slice(6));
-  const separator = credentials.indexOf(":");
-  const actualUsername = credentials.slice(0, separator);
-  const actualPassword = credentials.slice(separator + 1);
-
-  if (actualUsername !== username || actualPassword !== password) {
-    return unauthorized;
+  if (pathname === "/login") {
+    if (!isValid) return NextResponse.next();
+    return NextResponse.redirect(new URL(sanitizeNextPath(request.nextUrl.searchParams.get("next")), request.url));
   }
 
-  return NextResponse.next();
+  if (isValid) return NextResponse.next();
+
+  const loginUrl = new URL("/login", request.url);
+  loginUrl.searchParams.set("next", `${pathname}${search}`);
+  return NextResponse.redirect(loginUrl);
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|logout).*)"],
 };

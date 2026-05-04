@@ -43,6 +43,10 @@ input {
   font: inherit;
 }
 
+button {
+  border: 0;
+}
+
 .shell {
   display: grid;
   grid-template-columns: 248px minmax(0, 1fr);
@@ -107,6 +111,24 @@ input {
 .nav-link[aria-current="page"] {
   background: var(--panel);
   border-color: var(--line);
+  color: var(--text);
+}
+
+.logout-link {
+  position: absolute;
+  right: 16px;
+  bottom: 18px;
+  left: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  padding: 9px 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.logout-link:hover {
+  border-color: var(--accent);
   color: var(--text);
 }
 
@@ -443,6 +465,91 @@ tr:last-child td {
   border-color: var(--accent);
 }
 
+.login-screen {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-panel {
+  width: min(420px, 100%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.login-brand {
+  border-bottom: 0;
+  padding: 0;
+}
+
+.login-copy {
+  margin: 34px 0 22px;
+}
+
+.login-copy h1 {
+  margin: 4px 0 8px;
+  font-size: 32px;
+  letter-spacing: 0;
+}
+
+.login-copy p:not(.eyebrow) {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.login-form input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0d0f10;
+  color: var(--text);
+  padding: 11px 12px;
+  outline: none;
+}
+
+.login-form input:focus {
+  border-color: var(--accent);
+}
+
+.login-form button {
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #111412;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 11px 12px;
+}
+
+.login-form button:hover {
+  filter: brightness(1.05);
+}
+
+.login-error {
+  margin: 0;
+  border: 1px solid rgba(217, 108, 102, 0.36);
+  border-radius: var(--radius);
+  color: var(--critical);
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
 .user-link {
   color: var(--accent);
   font-weight: 700;
@@ -506,6 +613,7 @@ tr:last-child td {
   }
 
   .sidebar {
+    padding-bottom: 18px;
     position: static;
     height: auto;
     border-right: 0;
@@ -514,6 +622,12 @@ tr:last-child td {
 
   .nav {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .logout-link {
+    position: static;
+    display: block;
+    margin-top: 12px;
   }
 
   .main {
