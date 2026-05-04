@@ -17,9 +17,12 @@ Required environment variables:
 ```env
 ANALYTICS_API_BASE_URL=https://your-gennety-backend.example.com
 ANALYTICS_ADMIN_SECRET=your-shared-server-side-secret
+DASHBOARD_BASIC_AUTH_USER=admin
+DASHBOARD_BASIC_AUTH_PASSWORD=your-strong-dashboard-password
 ```
 
 `ANALYTICS_ADMIN_SECRET` is used only in server-side fetches and must never be exposed to browser code.
+If the dashboard auth variables are omitted, the app will not require Basic Auth.
 
 ## Vercel Deployment
 
@@ -34,5 +37,7 @@ Set these Environment Variables in Vercel for Production, Preview, and Developme
 
 - `ANALYTICS_API_BASE_URL`
 - `ANALYTICS_ADMIN_SECRET`
+- `DASHBOARD_BASIC_AUTH_USER`
+- `DASHBOARD_BASIC_AUTH_PASSWORD`
 
 The backend must have the same `ANALYTICS_ADMIN_SECRET` configured and must expose `/api/admin/analytics/*`.
