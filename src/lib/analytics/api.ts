@@ -46,11 +46,11 @@ export interface EndpointMap {
 const DEFAULT_RANGE = "30d";
 
 function getConfig() {
-  const baseUrl = process.env.ANALYTICS_API_BASE_URL ?? process.env.GENNETY_API_BASE_URL;
+  const baseUrl = process.env.ANALYTICS_API_BASE_URL ?? process.env.BEAJEE_API_BASE_URL;
   const secret = process.env.ANALYTICS_ADMIN_SECRET;
 
   if (!baseUrl) {
-    throw new Error("Missing ANALYTICS_API_BASE_URL. Set it to the Gennety backend origin.");
+    throw new Error("Missing ANALYTICS_API_BASE_URL. Set it to the Beajee backend origin.");
   }
 
   if (!secret) {

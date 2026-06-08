@@ -21,9 +21,9 @@ export function Shell({ children }: { children: ReactNode }) {
     <div className="shell">
       <aside className="sidebar">
         <Link className="brand" href="/overview">
-          <span className="brand-mark">G</span>
+          <span className="brand-mark">B</span>
           <span>
-            <strong>Gennety</strong>
+            <strong>Beajee</strong>
             <small>Analytics OS</small>
           </span>
         </Link>

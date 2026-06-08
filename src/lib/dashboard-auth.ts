@@ -1,4 +1,4 @@
-export const DASHBOARD_SESSION_COOKIE = "gennety_dashboard_session";
+export const DASHBOARD_SESSION_COOKIE = "beajee_dashboard_session";
 
 export function getDashboardAuthConfig() {
   const username = process.env.DASHBOARD_BASIC_AUTH_USER;
@@ -19,7 +19,7 @@ export function sanitizeNextPath(value: FormDataEntryValue | string | null | und
 
 export async function createDashboardSessionToken(username: string, cookieSecret: string) {
   const encoder = new TextEncoder();
-  const data = encoder.encode(`gennety-dashboard:${username}:${cookieSecret}`);
+  const data = encoder.encode(`beajee-dashboard:${username}:${cookieSecret}`);
   const digest = await crypto.subtle.digest("SHA-256", data);
   return Array.from(new Uint8Array(digest))
     .map((byte) => byte.toString(16).padStart(2, "0"))

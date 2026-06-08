@@ -1,6 +1,6 @@
-# Gennety Analytics OS
+# Beajee Analytics OS
 
-Internal analytics dashboard for Gennety.
+Internal analytics dashboard for Beajee.
 
 ## Local Development
 
@@ -15,7 +15,7 @@ The dashboard runs on `http://localhost:3001`.
 Required environment variables:
 
 ```env
-ANALYTICS_API_BASE_URL=https://your-gennety-backend.example.com
+ANALYTICS_API_BASE_URL=https://your-beajee-backend.example.com
 ANALYTICS_ADMIN_SECRET=your-shared-server-side-secret
 DASHBOARD_BASIC_AUTH_USER=admin
 DASHBOARD_BASIC_AUTH_PASSWORD=your-strong-dashboard-password

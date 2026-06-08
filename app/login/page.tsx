@@ -15,9 +15,9 @@ export default async function LoginPage({ searchParams }: { searchParams?: PageS
     <main className="login-screen">
       <section className="login-panel">
         <div className="brand login-brand">
-          <span className="brand-mark">G</span>
+          <span className="brand-mark">B</span>
           <span>
-            <strong>Gennety</strong>
+            <strong>Beajee</strong>
             <small>Analytics OS</small>
           </span>
         </div>

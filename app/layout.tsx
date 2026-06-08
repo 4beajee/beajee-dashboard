@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Gennety Analytics OS",
-  description: "Internal analytics dashboard for Gennety.",
+  title: "Beajee Analytics OS",
+  description: "Internal analytics dashboard for Beajee.",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
